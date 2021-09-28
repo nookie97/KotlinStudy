@@ -20,3 +20,10 @@ Android 스튜디오 프로젝트에 관한 여러 설정을 변경하려면 Fil
  * SDK Location: 프로젝트에서 사용하는 JDK, Android SDK 및 Android NDK의 위치를 설정합니다.
  * Project: Gradle 및 Gradle용 Android 플러그인의 버전과 저장소 위치 이름을 설정합니다.
  * Modules: 타겟 SDK 및 최소 SDK, 앱 서명, 라이브러리 종속 항목을 비롯한 모듈별 빌드 구성을 수정할 수 있습니다.
+ 
+ ## Preferences  
+ * SDK Location
+ * File Color, VCS(버전컨트롤), plugin
+ ## Manifest - 빌드도구, 운영체체, 앱에 관한 필수 정보 설명
+   패키지명, 앱이름, 앱 구성요소(activity, service, receiver, provider)
+   권한 설정 - 인터넷, 문자, 전화, 전화부, 파일, 센서 선언 
