@@ -34,6 +34,7 @@ Android 스튜디오 프로젝트에 관한 여러 설정을 변경하려면 Fil
  * 앱이 링크되어야 하는 API 라이브러리(Android 프레임워크 API 제외)
  * 패키지명, 앱이름, 앱 구성요소(activity, service, receiver, provider)
  * https://developer.android.com/guide/topics/manifest/manifest-intro?hl=ko
+ * 
  
  ### 앱 구성요소
  * 액티비티 <activity>
