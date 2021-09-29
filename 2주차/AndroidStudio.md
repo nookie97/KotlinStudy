@@ -15,15 +15,41 @@
     코드가 아닌 모든 리소스(예: XML 레이아웃, UI 문자열, 비트맵 이미지 등)를 포함합니다. 이 리소스는 리소스에 상응하는 
     하위 디렉터리로 나뉩니다. 가능한 모든 리소스 유형에 관한 자세한 내용은 리소스 제공을 참고하세요.
     
-# 프로젝트 구조 설정 
+## 프로젝트 구조 설정 
 Android 스튜디오 프로젝트에 관한 여러 설정을 변경하려면 File > Project Structure를 클릭하여 Project Structure 대화상자를 엽니다. 여기에는 다음 섹션이 포함되어 있습니다.
  * SDK Location: 프로젝트에서 사용하는 JDK, Android SDK 및 Android NDK의 위치를 설정합니다.
  * Project: Gradle 및 Gradle용 Android 플러그인의 버전과 저장소 위치 이름을 설정합니다.
  * Modules: 타겟 SDK 및 최소 SDK, 앱 서명, 라이브러리 종속 항목을 비롯한 모듈별 빌드 구성을 수정할 수 있습니다.
  
- ## Preferences  
+ ### Preferences  
  * SDK Location
  * File Color, VCS(버전컨트롤), plugin
- ## Manifest - 빌드도구, 운영체체, 앱에 관한 필수 정보 설명
-   패키지명, 앱이름, 앱 구성요소(activity, service, receiver, provider)
-   권한 설정 - 인터넷, 문자, 전화, 전화부, 파일, 센서 선언 
+ 
+## 어플리케이션 기본 항목
+ ### Manifest
+ Android 시스템이 앱 구성 요소를 시작하려면 시스템은 우선 앱의 매니페스트 파일, AndroidManifest.xml을 읽어서 해당 구성 요소가 존재하는지 확인함
+ 앱은 이 파일 안에 모든 구성 요소를 선언해야 하며, 이 파일은 앱 프로젝트 디렉토리의 루트에 있어야 함
+ * 앱이 요구하는 모든 사용자 권한(예: 인터넷 액세스, 사용자의 연락처에 대한 읽기 액세스)
+ * 앱에서 사용하거나 요구하는 하드웨어 및 소프트웨어 기능(예: 카메라, 블루투스 서비스, 멀티터치 화면)
+ * 앱이 링크되어야 하는 API 라이브러리(Android 프레임워크 API 제외)
+ * 패키지명, 앱이름, 앱 구성요소(activity, service, receiver, provider)
+ 
+ ### 앱 구성요소
+ * 액티비티 <activity>
+ * 서비스  <service>
+ * 브로드캐스트 리시버 <receiver> 
+ * 콘텐츠 제공자 <provider> 
+ 
+ ### 앱 리소스
+ 소스 코드와 별도로 이미지, 오디오 파일, 그리고 앱의 시각적 표현과 관련된 것 등의 여러 리소스가 필요
+ * 액티비티 사용자 인터페이스의 애니메이션, 메뉴, 스타일, 색상, 레이아웃을 XML 파일로 정의
+ * anim/
+ * drawable/
+ * mipmap/
+ * layout/
+ * menu/
+ * values/color/
+ * values/string/
+ * values/styles/
+ * values/dimens/
+ 
