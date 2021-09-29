@@ -33,6 +33,7 @@ Android 스튜디오 프로젝트에 관한 여러 설정을 변경하려면 Fil
  * 앱에서 사용하거나 요구하는 하드웨어 및 소프트웨어 기능(예: 카메라, 블루투스 서비스, 멀티터치 화면)
  * 앱이 링크되어야 하는 API 라이브러리(Android 프레임워크 API 제외)
  * 패키지명, 앱이름, 앱 구성요소(activity, service, receiver, provider)
+ * https://developer.android.com/guide/topics/manifest/manifest-intro?hl=ko
  
  ### 앱 구성요소
  * 액티비티 <activity>
@@ -52,4 +53,7 @@ Android 스튜디오 프로젝트에 관한 여러 설정을 변경하려면 Fil
  * values/string/
  * values/styles/
  * values/dimens/
+ 
+ ## Gradle Script
+ 고급 빌드 툴킷인 Gradle을 사용하여 빌드 프로세스를 자동화하고 관리하는 한편, 개발자가 유연한 맞춤 빌드 구성을 정의하도록 허용
  
