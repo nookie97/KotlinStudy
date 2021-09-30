@@ -1,3 +1,5 @@
+package com.example.test
+lateinit var ss : String
 fun main(){
     HelloWorld()
     add(1, 2)
@@ -7,9 +9,6 @@ fun main(){
 
 
 
-    var str1 : String? = "Hello Chungchy"
-    //str1 = null
-    println("str1 $str1 length: ${str1?.length ?: -1}")
 }
 
 fun HelloWorld(){
@@ -116,13 +115,17 @@ fun nullCheck(){
     var len1 = nName?.length // 널이면 랭스값을 구하고 아니면 끝
     println(" lent: $len, $len1")
 
+    //?:
+    var str1 : String? = "Hello Chungchy"
+    str1 = null
+    println("str1 $str1 length: ${str1?.length ?: -1}")
     // ?:
     val lastName : String? = null
     val fullName = name +" "+(lastName?: "No Name")     // 엘비스 연산자, lastName 이 있으면 lastName 쓰고 null 이면 No Name 출력
     println(fullName)
-    ignoreNulls(null)
-    // !! 절대 널 일수 없다
 
+    // !! 절대 널 일수 없다
+    ignoreNulls(null)
 }
 
 fun ignoreNulls(str :String?){
