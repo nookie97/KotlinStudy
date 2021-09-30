@@ -1,5 +1,11 @@
 package com.example.test
 lateinit var ss : String
+val testLazy : String by lazy {
+    println("1")
+    println("2")
+    "aaa"
+    "test"
+}
 fun main(){
     HelloWorld()
     add(1, 2)
@@ -7,7 +13,11 @@ fun main(){
     val s : (Int) -> Int = {x : Int -> x * x}
     println(s(22))
 
-
+    val user = User()
+    //println(user.lateData)
+    user.lateData = "Sanchez"
+    println(user.lateData)
+    println("test :$testLazy")
 
 }
 
@@ -133,8 +143,13 @@ fun ignoreNulls(str :String?){
     println(nNull.length)
 }
 
+class User{
+    lateinit var lateData : String
+}
+
 
 fun add ( a : Int, b :Int) : Int{
 
     return a + b
 }
+
