@@ -1,155 +1,64 @@
-package com.example.test
-lateinit var ss : String
-val testLazy : String by lazy {
-    println("1")
-    println("2")
-    "aaa"
-    "test"
-}
-fun main(){
-    HelloWorld()
-    add(1, 2)
-
-    val s : (Int) -> Int = {x : Int -> x * x}
-    println(s(22))
-
-    val user = User()
-    //println(user.lateData)
-    user.lateData = "Sanchez"
-    println(user.lateData)
-    println("test :$testLazy")
-
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
 }
 
-fun HelloWorld(){
-    //Redundant 'Unit' return type - 굳이 안 써도 된다
-    //print("kotlin")
-    //forAnd()
-    //nullCheck()
-    more {
-        "$it Kotlin"
+android {
+    compileSdk 31
+
+    defaultConfig {
+        applicationId "com.example.test"
+        minSdk 23
+        targetSdk 31
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
     }
 }
 
-
-
-fun more(out:(String) -> String){
-    println(out("Hello"))
+dependencies {
+    implementation 'androidx.core:core-ktx:1.6.0'
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 }
 
 
-// 변수 선언
-// val = value
-// var = variable
 
-fun hi(){
-    val a : Int = 10
-    var b = 14
-
-    //a = 12
-    b = 100
-    var name = "Seokjin"
-    var e : String
-}
-
-fun str (){
-    val name = "Seokjin"
-    print("name : $name")
-}
-
-fun maxBy(a : Int, b : Int): Int{
-    if(a > b)
-        return a
-    else
-        return b
-}
-fun maxBy2(a : Int, b : Int) = if(a>b) a else b
-
-fun checkSum(score : Int){
-    when(score){
-        0 -> println()
-        1 -> println()
-        2, 3 -> println()
-        else -> println()
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
     }
-    var b = when(score){
-        1->1
-        2->2
-        else->3
-    }
-    when(score){
-        in 90..100 -> println()
-        in 10..80 -> println()
+    dependencies {
+        classpath "com.android.tools.build:gradle:7.0.2"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.30"
 
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
     }
 }
 
-// Array, List
-
-fun array(){
-    val array = arrayOf(1, 2, 3) // get, set
-    val list = listOf(1,2,3)     // get
-    array[0] = 1
-    array[0] = 2
-    list[0]
-
-    val arrayList = arrayListOf<Int>()
-    arrayList.add(10)
-    arrayList.add(23)
-    arrayList[0] = 22
-}
-
-fun forAnd(){
-    val stu = arrayListOf("Seokin", "fefe", "aaaa", "bbbb")
-    for(name in stu){
-        println(name)
-    }
-    var sum = 0
-    for(i in 1..10){
-        sum += i
-    }
-    println(sum)
-    var min = 0
-    for(i in 1 until 10){
-        min += i
-    }
-    println(min)
-}
-
-// Nullable / NonNull
-fun nullCheck(){
-    // NPE :
-    var name = "Sanchez"
-    var nName : String? = null // nullable 타입
-    var len = name.length
-    var len1 = nName?.length // 널이면 랭스값을 구하고 아니면 끝
-    println(" lent: $len, $len1")
-
-    //?:
-    var str1 : String? = "Hello Chungchy"
-    str1 = null
-    println("str1 $str1 length: ${str1?.length ?: -1}")
-    // ?:
-    val lastName : String? = null
-    val fullName = name +" "+(lastName?: "No Name")     // 엘비스 연산자, lastName 이 있으면 lastName 쓰고 null 이면 No Name 출력
-    println(fullName)
-
-    // !! 절대 널 일수 없다
-    ignoreNulls(null)
-}
-
-fun ignoreNulls(str :String?){
-    val nNull : String = str!!
-    println(nNull.length)
-}
-
-class User{
-    lateinit var lateData : String
-}
-
-
-fun add ( a : Int, b :Int) : Int{
-
-    return a + b
+task clean(type: Delete) {
+    delete rootProject.buildDir
 }
 
