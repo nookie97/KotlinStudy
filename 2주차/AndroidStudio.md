@@ -33,8 +33,8 @@ Android 스튜디오 프로젝트에 관한 여러 설정을 변경하려면 Fil
  * 앱에서 사용하거나 요구하는 하드웨어 및 소프트웨어 기능(예: 카메라, 블루투스 서비스, 멀티터치 화면)
  * 앱이 링크되어야 하는 API 라이브러리(Android 프레임워크 API 제외)
  * 패키지명, 앱이름, 앱 구성요소(activity, service, receiver, provider)
+ * exported : 다른 애플리케이션의 구성요소로 액티비티를 시작할 수 있는지 설정
  * https://developer.android.com/guide/topics/manifest/manifest-intro?hl=ko
- * 
  
  ### 앱 구성요소
  * 액티비티 <activity>
@@ -57,4 +57,15 @@ Android 스튜디오 프로젝트에 관한 여러 설정을 변경하려면 Fil
  
  ## Gradle Script
  고급 빌드 툴킷인 Gradle을 사용하여 빌드 프로세스를 자동화하고 관리하는 한편, 개발자가 유연한 맞춤 빌드 구성을 정의하도록 허용
+ 참고 : Gradle과 Android 플러그인은 Android 스튜디오와 독립적으로 실행되므로, 빌드 도구를 별도로 업데이트해야 함
+ ### 실행/디버그 구성 변경
+ 앱을 처음으로 실행하는 경우 Android 스튜디오에서 기본 실행 구성이 사용되며 실행 구성은 APK 또는 Android App Bundle에서 앱을 배포할지 여부, 실행할 모듈, 배포할 패키지, 시작할 활동, 대상 기기, 에뮬레이  터 설정, logcat 옵션 등을 지정함. 
+ 기본 실행/디버그 구성은 APK를 빌드하고, 기본 프로젝트 활동을 시작하며, 대상 기기 선택에 Select Deployment Target 대화상자를 사용함
+ ### 프로젝트 빌드
+ * Clean Project : 중간/캐싱된 파일을 모두 삭제합니다.
+ * Rebuild Project :	선택된 빌드 변형에 관해 Clean Project를 실행하고 APK를 생성합니다.
+ * Build Bundle(s) / APK(s) > Build APK(s) : 선택된 변형에 관해 현재 프로젝트 내 모든 모듈의 APK를 빌드함 빌드가 완료되면 확인 알림이 표시되어 APK 파일의 링크 및 APK Analyzer에서 APK 파일을 분석하는 링크가 제공됩니다.
+ * Generate Signed Bundle / APK : 새로운 서명 구성을 설정하고 서명된 App Bundle 또는 APK를 빌드하여 출시 키로 앱에 서명해야만 Play Console에 앱을 업로드할 수 있음
+ 
+ ### Gradle 설명
  
