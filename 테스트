@@ -12,6 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello World!"
+        android:textSize="30dp"
         />
     <TextView
         android:id="@+id/txt2"
@@ -19,6 +20,7 @@
         android:layout_height="wrap_content"
         android:text="Hello Android!!"
         app:layout_constraintStart_toEndOf="@+id/txt1"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txt1"
         />
     <Button
         android:id="@+id/button1"
