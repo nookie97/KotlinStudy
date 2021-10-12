@@ -69,3 +69,20 @@ Android 스튜디오 프로젝트에 관한 여러 설정을 변경하려면 Fil
  
  ### Gradle 설명
  
+ 
+ ## Constraintlayout
+ Constraintlayout의 제약조건을 이용하여 UI 를 제어하는 방식으로 중첩된 Layout을 피할 수 있도록 설계, 하지만 include를 이용하여 중첩하여 사용 가능
+ 
+ ![1_b1RByMQNiBdxzewW5VwnVw](https://user-images.githubusercontent.com/66652964/136881239-3f08af05-519e-42da-b449-9800b2521d7f.png)
+
+ ![1_WeqqW4I6Cvc16V1ba3mf-Q](https://user-images.githubusercontent.com/66652964/136881250-f273f2f6-6935-4762-86da-88ccdda8376c.png)
+ 
+ ![1_p1cqwpoC48zGpWixkBZZFA](https://user-images.githubusercontent.com/66652964/136881276-83b8cd7a-5477-44de-8bcc-4109476543e4.png)
+
+ ![1_nUxjQUPknAJnxuEvA-loew](https://user-images.githubusercontent.com/66652964/136881287-4e439f54-240b-4cbc-9fd4-ab35b7da9bab.png)
+ 
+ ![1_YIlF4obPPvbCEdTnwhqhrQ](https://user-images.githubusercontent.com/66652964/136881298-9af05540-61ae-4114-adc2-6734ac9c9544.png)
+
+ 
+
+ 
