@@ -72,6 +72,60 @@ Android 스튜디오 프로젝트에 관한 여러 설정을 변경하려면 Fil
  
  ## Constraintlayout
  Constraintlayout의 제약조건을 이용하여 UI 를 제어하는 방식으로 중첩된 Layout을 피할 수 있도록 설계, 하지만 include를 이용하여 중첩하여 사용 가능
+ * Constraintlayout에서 자식 뷰의 위치를 잡는 기준
+ * 다른뷰나 부모 레이아웃과의 정렬조건 / 연결관계를 나타냄
+ * start, end 속성은 left, right 속성보다 우선됨
+ * Top/Bottom/Start/End를 모두 선언해야하는 것은 아님
+ * 가급적 상, 하, 좌, 우 제약조건을 설정해 주는것을 권장
+ 
+ dependencies {
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
+}
+
+
+ 
+ ### 위젯과의 관계
+ app:layout_constraint방향(이 위젯의 방향에서)_to(대상 위젯의 해당 방향으로)of : 대상 id or parent
+ 
+ 방향이름
+ 
+ ![스크린샷 2021-10-14 오전 9 22 55](https://user-images.githubusercontent.com/66652964/137230301-5c689edc-a9d0-4dd0-89ec-52c0e747d68c.png)
+ 
+ ### 여백
+ 뷰와 뷰 사이의 간격을 margin 속성으로 설정
+ android:layout_marginStart     
+ android:layout_marginEnd
+ android:layout_marginLeft
+ android:layout_marginRight
+ android:layout_marginTop
+ android:layout_marginBottom
+ 
+ 이미지가 gone 처리 했을 때
+ layout_goneMarginStart
+ 
+ 
+ ### bias 설정
+ 어느 한 방향으로 비율로 치우치게 설정
+ app:layout_constraintHorizontal_bias="0.2"
+ app:layout_constraintVertical_bias="0.2"
+ 수평 방향으로 좌측 20, 우측 80
+ 수직 방향으로 상단 20, 하단 80
+ 
+ ### 비율
+ 특정 비율에 따라 수치를 보여주는 옵션
+ 
+ app:layout_constraintDimensionRatio="1:1"
+ app:layout_constraintHeight_percent="0.02"
+ 
+ ### 그외 (가상의 뷰)
+ 1. Guideline : 가로 또는 세로의 축을 가진 가상의 뷰, 부모 뷰의 특정 위치를 기준접으로 삼을 때 사용
+ * app:layout_constraintGuide_begin
+ * app:layout_constraintGuide_end
+ * app:layout_constraintGuide_percent
+ 
+ 2. Barrier : 여러 뷰의 가장자리 위치에 만드는 가상의 뷰
+ 
+ 
  
  ![1_b1RByMQNiBdxzewW5VwnVw](https://user-images.githubusercontent.com/66652964/136881239-3f08af05-519e-42da-b449-9800b2521d7f.png)
 
@@ -83,6 +137,8 @@ Android 스튜디오 프로젝트에 관한 여러 설정을 변경하려면 Fil
  
  ![1_YIlF4obPPvbCEdTnwhqhrQ](https://user-images.githubusercontent.com/66652964/136881298-9af05540-61ae-4114-adc2-6734ac9c9544.png)
 
+ 
+ https://github.com/beomjo/about-constraint-layout#about-constraint-layout
  
 
  
