@@ -70,6 +70,19 @@ Android 스튜디오 프로젝트에 관한 여러 설정을 변경하려면 Fil
  ### Gradle 설명
  
  
+ # 레이아웃
+ 레이아웃의 모든 요소는 View와 ViewGroup 객체의 계층 구조를 사용하여 빌드
+ ![viewgroup_2x](https://user-images.githubusercontent.com/66652964/137658094-8d55aa01-087e-4849-9f1f-c2588cba0b7f.png)
+그림 1. UI 레이아웃을 정의하는 뷰 계층 구조 예
+ 
+ View 객체는 일반적으로 '위젯'이라고 하고 Button 또는 TextView와 같은 여러 서브클래스 중 하나이고
+ ViewGroup 객체는 일반적으로 '레이아웃'이라고 하고 LinearLayout 또는 ConstraintLayout과 같은 다양한 레이아웃 구조를 제공
+ 
+ ## xml 쓰기
+ 
+ ## xml 리소스 로드
+ * ID 선언 android:id="@+id/my_button"
+ 
  ## Constraintlayout
  Constraintlayout의 제약조건을 이용하여 UI 를 제어하는 방식으로 중첩된 Layout을 피할 수 있도록 설계, 하지만 include를 이용하여 중첩하여 사용 가능
  * Constraintlayout에서 자식 뷰의 위치를 잡는 기준
