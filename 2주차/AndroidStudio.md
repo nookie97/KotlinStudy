@@ -78,6 +78,9 @@ Android 스튜디오 프로젝트에 관한 여러 설정을 변경하려면 Fil
  View 객체는 일반적으로 '위젯'이라고 하고 Button 또는 TextView와 같은 여러 서브클래스 중 하나이고
  ViewGroup 객체는 일반적으로 '레이아웃'이라고 하고 LinearLayout 또는 ConstraintLayout과 같은 다양한 레이아웃 구조를 제공
  
+ * View :  Button, TextView, EditText, ListView, CheckBox, RadioButton, Gallery, Spinner
+ * ViewGroup :  LinearLayout, FrameLayout, RelativeLayout
+ 
  ## xml 쓰기
  
  ## xml 리소스 로드
