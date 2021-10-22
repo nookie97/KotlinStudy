@@ -91,19 +91,32 @@ Intent는 메시징 객체로, 다른 앱 구성 요소(activity, service, recei
  </br>
  sub_view.xml -> SubViewBinding
  
- 생성되는 바인딩 클래스의 이름은 ResultProfileBinding가 됩니다. 이 클래스에는 name이라는 ID를 갖는 TextView와 button이라는 ID를 갖는 Button 필드를 갖습니다. 레이아웃의 ImageView에는 ID가 없으므로 바인딩 클래스에 대한 참조가 없습니다.
-모든 바인딩 클래스에는 해당 레이아웃 파일의 루트뷰에 대한 직접 참조를 제공하는 getRoot() 메소드도 포함되어 있습니다. 이 예제에서 ResultProfileBinding 클래스의 getRoot() 메소드는 LinearLayout 루트보기를 반환합니다.
-생성된 바인딩 클래스의 인스턴스를 얻으려면 정적 inflate() 메소드를 호출하십시오. 일반적으로 setContentView()를 호출하여 클래스의 루트뷰를 매개 변수로 전달하여 화면에서 활성화된 뷰로 만듭니다. 아래의 예제에서는 액티비티에서 ResultProfileBinding.inflate()를 호출하고, setContentView에 루트뷰를 적용하는 예제를 보여줍니다.
+  ```
+ <LinearLayout ... >
+    <TextView android:id="@+id/name" />
+    <ImageView android:cropToPadding="true" />
+    <Button android:id="@+id/button"
+        android:background="@drawable/rounded_button" />
+</LinearLayout>
+ ```
+ 
+ 생성되는 바인딩 클래스의 이름은 ActivityMainBinding 되고
+ 이 클래스에는 name이라는 ID를 갖는 TextView와 button이라는 ID를 갖는 Button 필드를 갖고 레이아웃의 ImageView에는 ID가 없으므로 바인딩 클래스에 대한 참조가 없음
+ </br>
+모든 바인딩 클래스에는 해당 레이아웃 파일의 루트뷰에 대한 직접 참조를 제공하는 getRoot() 메소드도 포함됨 
+이 예제에서 ActivityMainBinding 클래스의 getRoot() 메소드는 LinearLayout 루트보기를 반환합니다.
+생성된 바인딩 클래스의 인스턴스를 얻으려면 정적 inflate() 메소드를 호출하십시오. 일반적으로 setContentView()를 호출하여 클래스의 루트뷰를 매개 변수로 전달하여 화면에서 활성화된 뷰로 만듭니다. 
+아래의 예제에서는 액티비티에서 ActivityMainBinding.inflate()를 호출하고, setContentView에 루트뷰를 적용하는 예제를 보여줍니다.
 
  
  
  
-  ```
-  private lateinit var binding: ResultProfileBinding
+  ``` Kotlin 
+  private lateinit var binding: ActivityMainBinding
 @Override
 fun onCreate(savedInstanceState: Bundle) {
     super.onCreate(savedInstanceState)
-    binding = ResultProfileBinding.inflate(layoutInflater)
+    binding = ActivityMainBinding.inflate(layoutInflater)
     setContentView(binding.root)
 }
   ```
@@ -119,44 +132,5 @@ Data binding과 View binding의 차이
 뷰 바인딩은 레이아웃 변수 또는 레이아웃 표현식을 지원하지 않으므로 XML의 데이터와 레이아웃을 바인딩하는 데 사용할 수 없습니다.
 내부적으로 데이터 바인딩 클래스를 생성할때 루트뷰에 tag를 삽입하는데 뷰바인딩은 그런 작업이 없다.
 뷰바인딩은 데이터바인딩보다 어노테이션 프로세싱의 일부를 사용하기 때문에 더 빠르게 바인딩 클래스를 생성한다.
-Charlezz
-A passionate developer who’s curious about Android
-
-Follow
-
-CHARLEZZ FOLLOWS
-Elye
-Elye
-Christophe Beyls
-Christophe Beyls
-Murat Yener
-Murat Yener
-Joe Birch
-Joe Birch
-Lyla Fujiwara
-Lyla Fujiwara
-See all (22)
-
-58
-
-
-Related
-
-
-Android: View Binding v/s Data Binding
-
-In the previous article I had talked about the benefits of using View Binding over findViewById(). I highly recommend you give it a read…
-
-
-Android | Data Binding And Two-way Data Binding
-
-
-View Binding in Android Jetpack [Updated]
-
-View binding is the current recommendation from the Google team for importing the views from XML to Activity, Fragment, or Adapter classes…
-
-
-How to use Android Data Binding in custom views?
-
 
   
