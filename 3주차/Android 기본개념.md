@@ -1,4 +1,8 @@
 # 생명주기
+
+![스크린샷 2021-10-25 오전 11 13 14](https://user-images.githubusercontent.com/66652964/138625307-1a587b59-6862-4775-8efc-3f7792654ced.png)
+
+
 1. onCreate()
 
 Activity가 처음 만들어질 때 호출되는 함수이면서, 어플리케이션이 처음 시작할 때 최초로 한번 실행되는 함수이다. 주로 view를 만들거나 view resource bind , data to list 등을 onCreate()에서 담당하며, 이전 상태의 정보를 담고있는 Bundle을 제공한다.
@@ -40,6 +44,12 @@ Activity위에 다른 Activity가 완전히 올라와 화면에서 100% 가려�
 
 Activity가 완전히 스택에서 없어질 때 호출되는 함수, 즉 제거되는 경우. 
 finish() 메소드가 호출되거나, 시스템 메모리 확보를 위해 호출된다.
+
+</br>
+
+# Fragment 생명주기
+
+![fragmen](https://user-images.githubusercontent.com/66652964/138625404-bdd95d0d-6935-4901-b4e8-cc296feb884f.png)
 
 
 # 인텐트
