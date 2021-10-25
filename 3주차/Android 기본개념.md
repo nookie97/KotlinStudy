@@ -51,6 +51,18 @@ finish() 메소드가 호출되거나, 시스템 메모리 확보를 위해 호�
 
 ![fragmen](https://user-images.githubusercontent.com/66652964/138625404-bdd95d0d-6935-4901-b4e8-cc296feb884f.png)
 
+1. onCreate()
+ * Fragment 만 CREATED 가 된 상황
+ * 이 시점에는 아직 Fragment View 가 생성되지 않았기 때문에 Fragment 의 View 와 관련된 작업을 두기에 적절하지 않고, 변수 초기화, 클래스 초기화 작업을 진행
+
+2. onCreateView(),  onViewCreated()
+ * Fragment View 를 직접 생성하고 inflate 할 수 있지만, LayoutId 를 받는 Fragment 의 생성자를 사용하여 해당 리소스 아이디 값을 통해 onCreateView() 재정의 없이도 Fragment View 를 생성
+ *  이 시점부터는 Fragment View 의 Lifecycle 이 INITIALIZED 상태로 업데이트 됐기 때문에 View 의 초기값을 설정해주거나 LiveData 옵저빙, RecyclerView 또는 ViewPager2 에 사용될 Adapter 세팅 등은 onViewCreated() 에서 해주는 것이 적절함
+ 
+3. onDestroyView()
+ * Fragment 가 화면으로부터 벗어났을 경우 Fragment View 의 Lifecycle 은 DESTROYED 가 되고 onDestroy() 가 호출
+ * 해당 시점에서는 가비지 컬렉터에 의해 수거될 수 있도록 Fragment View 에 대한 모든 참조가 제거되어야 함
+
 
 # 인텐트
 Intent는 메시징 객체로, 다른 앱 구성 요소(activity, service, receiver)로부터 작업을 요청하는 데 사용
