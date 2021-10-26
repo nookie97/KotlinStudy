@@ -89,4 +89,102 @@ fun add(){
 }
 
 
+// recycleView Activity
+package com.example.myapplication
+
+import android.annotation.SuppressLint
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.databinding.ActivityMainBinding
+
+class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
+    lateinit var profileAdapter: ProfileAdapter
+    val datas = mutableListOf<ProfileData>()
+
+    @SuppressLint("UseCompatLoadingForDrawables")
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        val sdss = findViewById<RecyclerView>(R.id.rv_profile)
+
+        profileAdapter = ProfileAdapter(this, datas)
+        sdss.adapter = profileAdapter
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding.rvProfile.adapter  = profileAdapter
+
+        //binding.btn.background = re getColor(R.color.black)
+
+        //binding.btn.background = resources.getDrawable(R.color.black, null)
+        datas.apply {
+            add(ProfileData(img = R.drawable.face1, name = "mary", age = 24))
+            add(ProfileData(img = R.drawable.face2, name = "jenny", age = 26))
+            add(ProfileData(img = R.drawable.face3, name = "jhon", age = 27))
+            add(ProfileData(img = R.drawable.face4, name = "ruby", age = 21))
+            add(ProfileData(img = R.drawable.face5, name = "yuna", age = 23))
+            add(ProfileData(img = R.drawable.face6, name = "yuna", age = 23))
+            add(ProfileData(img = R.drawable.face1, name = "yuna", age = 23))
+            add(ProfileData(img = R.drawable.face2, name = "yuna", age = 23))
+            add(ProfileData(img = R.drawable.face3, name = "yuna", age = 23))
+            add(ProfileData(img = R.drawable.face4, name = "yuna", age = 23))
+
+
+            //profileAdapter.datas = datas
+            //profileAdapter.notifyDataSetChanged()
+        }
+    }
+}
+
+data class ProfileData (
+    val name : String,
+    val age : Int,
+    val img : Int
+)
+
+// adapter 
+package com.example.myapplication
+
+import android.content.Context
+import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import android.widget.Toast
+import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+
+class ProfileAdapter (private val ctx : Context, val nameList:MutableList<ProfileData>) : RecyclerView.Adapter<ProfileAdapter.ViewHolder>(){
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view = LayoutInflater.from(ctx).inflate(R.layout.item_test,parent,false)
+        return ViewHolder(view, ctx)
+    } 
+
+    override fun getItemCount(): Int = nameList.size
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bind(nameList[position], position)
+    }
+
+    class ViewHolder(view: View, ctx1 : Context) : RecyclerView.ViewHolder(view) {
+
+        private val txtName: TextView = view.findViewById(R.id.tv_rv_name)
+        private val txtAge: TextView = view.findViewById(R.id.tv_rv_age)
+        private val imgProfile: ImageView = view.findViewById(R.id.img_rv_photo)
+        val ctx11 : Context = ctx1
+        fun bind(item: ProfileData, position: Int) {
+
+            txtName.text = item.name
+            txtAge.text = item.age.toString()
+            Glide.with(itemView).load(item.img).into(imgProfile)
+            itemView.setOnClickListener {
+                Toast.makeText(ctx11, position.toString()+", "+item.age.toString()+", "+item.name, Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+}
 
