@@ -1,0 +1,92 @@
+
+// inner class 코틀린 테스트
+class ClassKotlinTest {
+    private val outer = "Outer"
+    class InnerClass(){
+        init {
+            //Log.i("Test", outer)
+        }
+    }
+
+    class InnerClass1(outer : ClassKotlinTest){
+        init {
+            Log.i("Test", outer.outer)
+        }
+    }
+
+    inner class InnerClass2(){
+        init {
+            Log.i("test", outer)
+        }
+    }
+}
+
+// java class 테스트
+public class ClassJavaTest {
+    // 기본 클래스 개념
+    // 자바는 기본적으로 중첩 클래스를 생성하면 inner class로 정의되지만 Kotlin은 기본적으로  nested class 로 정의됨
+    private String str = "Outer";
+    class InnerClass{
+        public InnerClass(){
+            Log.i("test", str);
+        }
+    }
+
+    // Nested Class
+    static class InnerClass1{
+        public InnerClass1(){
+           // Log.i("test", str);
+        }
+    }
+
+    static class InnerClass2{
+        public InnerClass2(ClassJavaTest str){
+            Log.i("test", str.str);
+        }
+    }
+}
+
+// 코틀린 companion object
+data class Person(val name : String, var age : Int)
+class KotlinTest {
+
+    companion object {
+        const val max = 50
+        fun getKotlin(){
+            println("Hi Koltin")
+        }
+
+        val datas = mutableListOf<Person>()
+        var speakingData = MutableLiveData<Person>()
+
+        fun getSpeakingValue(): MutableLiveData<Person> {
+            //Log.i("아악",speakingData.value.toString())
+            return speakingData
+        }
+    }
+}
+
+
+
+fun main(){
+    add()
+    println(KotlinTest.max)
+    KotlinTest.getKotlin()
+
+    println(KotlinTest.datas[4].age)
+
+}
+
+fun add(){
+    KotlinTest.datas.add(Person("fdsa1", 12))
+    KotlinTest.datas.add(Person("fdsa2", 12))
+    KotlinTest.datas.add(Person("fdsa3", 12))
+    KotlinTest.datas.add(Person("fdsa4", 55))
+    KotlinTest.datas.add(Person("fdsa5", 44))
+    KotlinTest.datas.add(Person("fdsa6", 33))
+
+
+}
+
+
+
