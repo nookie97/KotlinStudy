@@ -16,10 +16,47 @@ binding.textView.text = "안녕"
     android:layout_height="wrap_content"
     android:text="@{user.name}" />
 ```
-근데 이걸 xml에 코드를 집어넣어서 해결하는 방법이 있다.
 
-이렇게 하면 자연스레 액티비티에는 로직만을 위한 코드만 남게 되고 뷰와 관련된 작업은 레이아웃 파일에 정의된다.
+이렇게 하면 자연스레 액티비티에는 로직만을 위한 코드만 남게 되고 뷰와 관련된 작업은 레이아웃 파일에 정의됨
 
-데이터와 뷰를 연결하는 작업을 레이아웃에서 처리하는 기술,
+데이터와 뷰를 연결하는 작업을 레이아웃에서 처리하는 기술, 이것을 우리는 데이터 바인딩이라고함
 
-이것을 우리는 데이터 바인딩이라고 부른다.
+## 방법
+```Kotlin
+android {
+    ...
+ 
+    dataBinding {
+        enabled = true
+    }
+}
+```
+
+```Kotlin 
+plugins {
+    id 'kotlin-kapt'
+}
+```
+build gradle에 추가 
+
+## layout에 추가 
+```Kotlin 
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+</layout>
+```
+data 모델 정의
+```Kotlin 
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="activity" // 키 값
+            type="com.example.myapplication.MainActivity" /> // 패키지명과 액티비티명 풀 네임으로 쓸것 
+    </data>
+</layout>
+```
+
+
