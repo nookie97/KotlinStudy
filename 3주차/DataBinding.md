@@ -26,8 +26,8 @@ binding.textView.text = "안녕"
 android {
     ...
  
-    dataBinding {
-        enabled = true
+    buildFeatures {
+        dataBinding = true
     }
 }
 ```
