@@ -1,4 +1,4 @@
-#Retrofit
+# Retrofit
 
 Retrofit2는 Square사에서 만든 네트워킹 라이브러리로, 오래 전에 Retrofit이라는 라이브러리를 출시한 뒤 기존 라이브러리의 문제점을 개선해 현재의 Retrofit2을 만듦
 
