@@ -157,7 +157,6 @@ object RetrofitClass{
         .build()
 }
 ```
-여기서 Retrofit Builder의 create의 인자로 API 인터페이스인 GeoService를 넣어주면 해당 인터페이스를 구현한 클래스가 생성되어 그 클래스로 통신이 이루어진다.
 
 > 5. Request 전송
 
@@ -175,26 +174,15 @@ RetrofitClass.getService().getUserList( loginParam ).enqueue(object :
   }
 })
 ```
-위 함수는 x, y 좌표를 받아 GeoService의 메서드인 getAddress()를 호출해 Retrofit으로 통신하고 응답을 받는 함수이다.
+
 
 Retrofit은 enqueue()를 이용해 비동기로 통신을 할 수 있고, execute()로 동기적으로도 통신을 할 수 있다.
 
 비동기로 통신을 할 경우에는 위와 같이 enqueue()의 인자로 응답이 왔을 때 동작하는 콜백 함수를 지정해 주면 되고, 동기로 통신을 할 경우에는 execute()의 반환 값으로 응답 데이터가 반환된다. 위 예제의 경우는 Response<GeoResponse>가 반환된다.
 
+ 이렇게 Retrofit으로 통신하는 기본적인 방법은 끝이 났다. 여기까지만 알아도 Retrofit을 사용하는 데 문제 없지만, 이 포스팅에서는 모든 API 요청에 인증 토큰을 함께 보내야 하는 경우 이용하는 OkHttp Interceptor에 대해 추가로 다룰 것이다.
  
-
- 
-
-이렇게 Retrofit으로 통신하는 기본적인 방법은 끝이 났다. 여기까지만 알아도 Retrofit을 사용하는 데 문제 없지만, 이 포스팅에서는 모든 API 요청에 인증 토큰을 함께 보내야 하는 경우 이용하는 OkHttp Interceptor에 대해 추가로 다룰 것이다.
-
- 
-
-앞의 예제처럼 요청이 적을 때는 @Header 어노테이션을 이용하여 직접 추가할 수 있지만, Http 요청이 많아지고 요청마다 토큰 인증이 필요하다면 요청을 추가 할때마다 지속적으로 매개변수를 추가해주어야 하는 문제가 발생한다. 그렇기 때문에 모든 Http요청에 헤더를 추가하기 위해서는 OkHttp Interceptor를 이용해야 한다.
-
- 
-
-먼저 HeaderInterceptor를 만들어 아래와 같이 intercept 메서드를 오버라이드 한다. 여기서 기존 Request에서 addHeader(key, value)로 요청에 필요한 Header를 추가한 것을 알 수 있다.
-  
+앞의 예제처럼 요청이 적을 때는 @Header 어노테이션을 이용하여 직접 추가할 수 있지만, Http 요청이 많아지고 요청마다 토큰 인증이 필요하다면 요청을 추가 할때마다 지속적으로 매개변수를 추가해주어야 하는 문제가 발생한다. 그렇기 때문에 모든 Http요청에 헤더를 추가하기 위해서는 OkHttp Interceptor를 이용해야 한다.  
   
 ```Kotlin
 // 중간에 데이터 캐치 -> 암호화 되어 있는 데이터를 복호화 하기 위해서 처리 하는 과정
