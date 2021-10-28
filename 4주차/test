@@ -1,0 +1,5 @@
+@GET("users/current/durations")
+    fun getCodingTime(
+        @Query("date") date : String,
+        @Query("api_key") string : String
+    ): Call<UserListContents>
