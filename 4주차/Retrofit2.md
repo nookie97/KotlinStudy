@@ -42,7 +42,7 @@ AndroidManifest.xml 파일에 INTERNET 권한을 추가한다.
 <uses-permission android:name="android.permission.INTERNET" />
 ```
 > 2. 응답 데이터 정의
-```
+```Json
 {
   "code": "0200",
   "msg": "LOGIN SUCCESS",
@@ -55,7 +55,7 @@ AndroidManifest.xml 파일에 INTERNET 권한을 추가한다.
       "MU_NAME": "홍석진",
       "PRIVACY_CHECK": "1",
       "PRIVACY_URL": "",
-      "U_IMG_PATH": "https://content.chungchy.com/data/ELSD/data/user_img/nookie97/20210324155405_nookie9999_200362.jpg",
+      "U_IMG_PATH": "https://content.chungchy.com/data/ELSD/data/user_img/nookie97/....",
       "MEM_POINT_EUM": "1",
       "USER_POINT": 2226
     },
@@ -198,22 +198,22 @@ Retrofit은 enqueue()를 이용해 비동기로 통신을 할 수 있고, execut
   
 ```Kotlin
 // 중간에 데이터 캐치 -> 암호화 되어 있는 데이터를 복호화 하기 위해서 처리 하는 과정
-    class AppInterceptor : Interceptor {
-        @Throws(IOException::class)
-        override fun intercept(chain: Interceptor.Chain)
-                : Response = with(chain) {
-            val request = chain.request()
+class AppInterceptor : Interceptor {
+   @Throws(IOException::class)
+      override fun intercept(chain: Interceptor.Chain)
+            : Response = with(chain) {
+        val request = chain.request()
 
-            val response = chain.proceed(request)
-            val rawJson1 = response.body()!!.string()
-            //LogLineBreak("Server Data", rawJson1)
-            val rawJson = security.decrypt(rawJson1.toString()).toString()
-            Log.i("Server Data", rawJson)
-            // Re-create the response before returning it because body can be read only once
-            return response.newBuilder()
-                .body(ResponseBody.create(response.body()!!.contentType(), rawJson)).build()
-        }
+        val response = chain.proceed(request)
+        val rawJson1 = response.body()!!.string()
+        //LogLineBreak("Server Data", rawJson1)
+        val rawJson = security.decrypt(rawJson1.toString()).toString()
+        Log.i("Server Data", rawJson)
+        // Re-create the response before returning it because body can be read only once
+        return response.newBuilder()
+            .body(ResponseBody.create(response.body()!!.contentType(), rawJson)).build()
     }
+}
 ```
 
   
